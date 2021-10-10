@@ -1,3 +1,4 @@
+#if문
 money = 2000
 card = True
 if money >= 3000 or card:

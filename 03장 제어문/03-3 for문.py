@@ -38,3 +38,48 @@ for mark in marks:
     if mark < 60:
         continue
     print("%d번 학생 축하합니다. 합격입니다. " % number)
+
+#for문과 함께 자주 사용하는 range 함수
+a = range(10)
+print(a)
+
+#예시
+add = 0
+for i in range(1, 11):
+    add = add + i
+print(add)
+
+marks = [90, 25, 67, 45, 80]
+for number in range(len(marks)):
+    if marks[number] < 60:
+        continue
+    print("%d번 학생 축하합니다. 합격입니다." % (number+1))
+
+#for와 range를 이용한 구구단
+for i in range(2, 10):
+    for j in range(1, 10):
+        print("{0:2d}" .format(i*j), end=" ") #해당 결과값을 출력할 때 다음줄로 넘기지 않고 그 줄에 계속해서 출력하기 위해 사용
+    print('') #두 번째 for문이 끝나면 결과값을 다음줄부터 출력하게 함
+
+#리스트 내포 사용
+a = [1,2,3,4]
+result = list()
+for num in a:
+    result.append(num*3)
+print(result)
+
+a = [1,2,3,4]
+result = [num * 3 for num in a if num % 2 == 0]
+print(result)
+"""
+[표현식 for 항목 in 반복가능객체 if 조건문]
+
+[표현식 for 항목1 in 반복가능객체1 if 조건문1
+        for 항목2 in 반복가능객체2 if 조건문2
+        ...
+        for 항목n in 반복가능객체n if 조건문n]
+"""
+
+result = [x*y for x in range(2,10)
+              for y in range(1,10)]
+print(result)

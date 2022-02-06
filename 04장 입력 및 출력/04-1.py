@@ -117,5 +117,87 @@ def say_nick(nick):
 """
 입력값으로 '바보'라는 값이 들어오면 문자열을 출력하지 않고 함수를 즉시 빠져나감
 """
+say_nick('야호')
+say_nick('바보')
 
 #매개변수에 초깃값 미리 설정하기
+def say_myself(name, old, man=True):
+    print("나의 이름은 %s 입니다." % name)
+    print("나이는 %d살입니다." % old)
+    if man:
+        print("남자입니다.")
+    else:
+        print("여자입니다.")
+
+say_myself('정재환', 26, 1)
+
+"""
+def say_myself(name, man=True, old): 
+    ...
+say_myself("정재환", 26)
+이렇게 되면 아래와 같은 오류가 발생한다.
+SyntaxError: non-default argument follows default argument
+"""
+
+#함수 안에서 선언한 변수의 효력 범위
+a = 1
+def vartest(a):
+    a = a+1
+
+vartest(a)
+print(a)
+"""
+결과값은 1로 출력.
+함수 안에서 a <- 2가 됐어도 범위는 함수 내로 국한.
+"""
+
+def vartest(a):
+    a = a + 1
+
+vartest(3)
+print(a)
+"""
+print(a)에서 오류 발생.
+"""
+
+#함수 안에서 함수 밖의 변수를 변경하는 방법
+#1. return 사용하기
+a = 1
+def vartest(a):
+    a = a+1
+    return a
+
+a = vartest(a)
+print(a)
+
+#2. global 명령어 사용하기
+a = 1
+def vartest():
+    global a
+    a = a+1
+
+vartest()
+print(a)
+"""
+global a 문장은 함수 안에서 함수 밖의 a 변수를 직접 사용하겠다는 뜻
+프로그래밍을 할 때 global 명령어는 사용하지 않는 것이 좋다.
+왜냐하면 함수는 독립적으로 존재하는 것이 좋기 때문
+외부 변수에 종속적인 함수는 그다지 좋은 함수가 아니다.
+"""
+
+#lambda
+"""
+보통 함수를 한 줄로 간결하게 만들 때 사용
+lambda 매개변수1, 매개변수2, ... : 매개변수를 이용한 표현식
+"""
+add = lambda a, b: a+b
+result = add(3,4)
+print(result)
+"""
+def add(a, b):
+    return a+b
+
+result = add(3, 4)
+print(result)
+이 것과 완전히 동일
+"""

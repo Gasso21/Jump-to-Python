@@ -21,6 +21,7 @@ print(add(a,b))
 #입력값이 없는 함수
 def say():
     return 'HI'
+
 print(say())
 
 #결과값이 없는 함수

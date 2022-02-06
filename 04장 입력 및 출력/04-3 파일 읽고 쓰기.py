@@ -71,6 +71,11 @@ lines = f.readlines()
 for line in lines:
     print(line)
 f.close()
+"""
+readlines 함수는 파일의 모든 줄을 읽어서 각각의 줄을 요소로 갖는 리스트로 돌려준다.
+따라서 위 예에서 lines는 리스트 ["1 번째 줄입니다.\n", "2 번째 줄입니다.\n", ..., "10 번째 줄입니다.\n"]가 된다.
+f.readlines()에서 f.readline()과는 달리 s가 하나 더 붙어 있음에 유의하자.
+"""
 
 #줄 바꿈(\n) 문자 제거하기
 f = open(r"C:\Users\Jaehwan\Desktop\Git\Jump-to-Python\04장 입력 및 출력\새파일.txt", 'r')
@@ -82,6 +87,38 @@ f.close()
 
 #read 함수 사용하기
 f = open(r"C:\Users\Jaehwan\Desktop\Git\Jump-to-Python\04장 입력 및 출력\새파일.txt", 'r')
-data = r.read()
-print(data)
+data = f.read()
+print("read 함수 사용하기\n"+data)
 f.close()
+"""
+f.read()는 파일의 내용 전체를 문자열로 돌려준다.
+따라서 위 예의 data는 파일의 전체 내용이다
+"""
+
+#파일에 새로운 내용 추가하기
+"""
+쓰기 모드('w')로 파일을 열 때 이미 존재하는 파일을 열면 그 파일의 내용이 모두 사라지게 된다.
+하지만 원래 있던 값을 유지하면서 단지 새로운 값만 추가해야 할 경우도 있다.
+이런 경우에는 파일을 추가 모드('a')로 열면 된다.
+에디터를 켜고 다음 소스 코드를 작성해 보자.
+"""
+f = open(r"C:\Users\Jaehwan\Desktop\Git\Jump-to-Python\04장 입력 및 출력\새파일.txt", 'a')
+for i in range(11, 20):
+    data = "%d번째 줄입니다.\n" % i
+    f.write(data)
+f.close()
+
+#with문과 함께 사용하기
+f = open("foo.txt", 'w')
+f.write("Life is too short, you need python")
+f.close()
+"""
+open -> close 식으로 항상 같이 세트로 묶어야함
+이를 자동으로 처리할 때 with문 사용
+"""
+
+with open("foo.txt", 'w') as f:
+    f.write("Life is too short, you need python")
+"""
+위와 같이 with문을 사용하면 with 블록을 벗어나는 순간 열린 파일 객체 f가 자동으로 close되어 편리
+"""

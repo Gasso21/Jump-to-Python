@@ -94,4 +94,50 @@ __init__.py 파일은 해당 디렉터리가 피키지의 일부임을 알려주
 
 ※ python3.3 버전부터는 __init__.py 파일이 없어도 패키지로 인식한다(PEP 420).
     하지만 하위 버전 호환을 위해 __init__.py 파일을 생성하는 것이 안전한 방법이다.
+
+>>> from game.sound import *
+>>> echo.echo_test()
+Traceback (most recent call last):
+    File "<stdin>", line 1, in <module>
+NameError: name 'echo' is not defined
+
+특정 디렉터리의 모듈을 *를 사용하여 import할 때에는 다음과 같이 해당 디렉터리의 __init__.py 파일에 __all__ 변수를 설정하고 import할 수 있는 모듈을 정의해주어야한다.
+# C:/doit/game/sound/__init__.py
+__all__ = ['echo']
+
+여기서 __all__이 의미하는 것은 sound 디렉터리에서 * 기호를 사용하여 import할 경우 이곳에 정의된 echo 모듈만 import된다는 의미
+
+※ from game.sound.echo import * 는 __all__과 상관없이 무조건 import된다. 
+    이렇게 __all__과 상관없이 무조건 import되는 경우는 from a.b.c import * 에서 
+    from의 마지막 항목인 c가 모듈인 경우이다.
+    
+위와 같이 __init__.py 파일을 변경한 후 위 예제를 수행하면 원하던 결과가 출력되는 것을 확인할 수 있다.
+
+>>> from game.sound import *
+>>> echo.echo_test()
+echo
+"""
+
+#relative 패키지
+"""
+graphic 디렉터리의 render.py 모듈이 sound 디렉터리의 echo.py 모듈을 사용할 때
+
+# render.py
+from game.sound.echo import echo_test
+def render_test():
+    print("render")
+    echo_test()
+
+와 같이 전체 경로를 사용하여 import할 수도 있지만,
+relative한 접근자를 사용할 수도 있다.
+
+.. – 부모 디렉터리
+. – 현재 디렉터리
+
+# render.py
+from ..sound.echo import echo_test
+
+def render_test():
+    print("render")
+    echo_test()
 """

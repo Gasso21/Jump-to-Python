@@ -265,3 +265,18 @@ if __name__ == "__main__":
     while data:
         print(random_pop(data))
 
+# webbrowser
+import webbrowser
+"""
+webbrowser는 자신의 시스템에서 사용하는 기본 웹 브라우저를 자동으로 실행하는 모듈이다.
+다음 예제는 웹 브라우저를 자동으로 실행하고 해당 URL인 google.com으로 가게 해 준다.
+
+webbrowser의 open 함수는 웹 브라우저가 이미 실행된 상태라면 입력 주소로 이동한다.
+만약 웹 브라우저가 실행되지 않은 상태라면 새로 웹 브라우저를 실행한 후 해당 주소로 이동한다.
+"""
+webbrowser.open("http://google.com")
+
+"""
+open_new 함수는 이미 웹 브라우저가 실행된 상태이더라도 새로운 창으로 해당 주소가 열리게 한다.
+"""
+webbrowser.open_new("http://google.com")

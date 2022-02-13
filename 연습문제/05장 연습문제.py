@@ -51,7 +51,7 @@ print(list(filter(lambda x: x > 0, l)))
 
 #Q5
 print(hex(234))
-print(int(0xea))
+print(int('0xea', 16))
 
 #Q6
 print(list(map(lambda x: x*3, [1, 2, 3, 4])))
@@ -66,6 +66,10 @@ for i in [-8, 2, 7, 5, -3, 5, 0, 1]:
         ma = i
 
 print(mi+ma)
+"""
+a = [-8, 2, 7, 5, -3, 5, 0, 1]
+print(max(a) + min(a))
+"""
 
 #Q8
 print(round(17/3, 4))
@@ -77,6 +81,17 @@ s = 0
 for i in x[1:]:
     s += int(i)
 print(s)
+
+"""
+import sys
+
+numbers = sys.argv[1:] # 파일 이름을 제외한 명령 행의 모든 입력
+
+result = 0
+for number in numbers:
+    result += int(number)
+print(result)
+"""
 
 #Q10
 """

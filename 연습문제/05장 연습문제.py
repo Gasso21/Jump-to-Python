@@ -79,4 +79,39 @@ for i in x[1:]:
 print(s)
 
 #Q10
+"""
 import os
+os.chdir('C:/doit')
+#os.system('dir')
+f = os.popen('dir')
+print(f.read())
+"""
+
+#Q11
+import glob
+print(glob.glob("c:/doit/*.py"))
+
+#Q12
+import time
+print(time.strftime('%Y/%m/%d %X', time.localtime(time.time())))
+"""
+2018/04/03 17:20:32
+"""
+
+#Q13
+"""
+random 모듈을 사용하여 로또 번호(1~45 사이의 숫자 6개)를 생성.
+(단 중복된 숫자가 있으면 안 됨)
+"""
+import random
+i = 1
+l = []
+while i <= 6:
+    r = random.randint(1, 45)
+    if r in l:
+        pass
+    else:
+        l.append(r)
+        i += 1
+
+print(l)
